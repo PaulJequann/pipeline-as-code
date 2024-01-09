@@ -5,10 +5,6 @@ data "aws_route53_zone" "main" {
   private_zone = false
 }
 
-# resource "aws_route53_zone" "main" {
-#   name = var.root_domain_name
-# }
-
 resource "aws_route53_record" "bastion" {
   zone_id = data.aws_route53_zone.main.zone_id
   name    = "bastion.${var.root_domain_name}"
@@ -58,15 +54,6 @@ resource "aws_route53_record" "cert_dns" {
   #   zone_id         = data.aws_route53_zone.main[each.key].zone_id
   zone_id = data.aws_route53_zone.main.zone_id
 }
-
-# resource "aws_route53_record" "cert_dns" {
-#   allow_overwrite = true
-#   name            = tolist(aws_acm_certificate.main.domain_validation_options)[0].resource_record_name
-#   records         = [tolist(aws_acm_certificate.main.domain_validation_options)[0].resource_record_value]
-#   type            = tolist(aws_acm_certificate.main.domain_validation_options)[0].resource_record_type
-#   zone_id         = aws_route53_zone.main.zone_id
-#   ttl             = 60
-# }
 
 resource "aws_acm_certificate_validation" "cert_validation" {
   certificate_arn         = aws_acm_certificate.main.arn

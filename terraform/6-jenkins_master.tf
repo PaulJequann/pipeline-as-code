@@ -71,7 +71,6 @@ resource "aws_security_group" "elb_jenkins_sg" {
     to_port     = "80"
     protocol    = "tcp"
     cidr_blocks = ["${chomp(data.http.allowed_ip.response_body)}/32"]
-    # cidr_blocks = [var.allowed_ip]
   }
 
   ingress {
@@ -79,7 +78,6 @@ resource "aws_security_group" "elb_jenkins_sg" {
     to_port     = "443"
     protocol    = "tcp"
     cidr_blocks = ["${chomp(data.http.allowed_ip.response_body)}/32"]
-    # cidr_blocks = [var.allowed_ip]
   }
 
   egress {

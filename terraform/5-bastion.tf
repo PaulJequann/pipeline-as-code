@@ -7,10 +7,6 @@ data "aws_ami" "bastion" {
   }
 }
 
-# data "http" "bastion_ip" {
-#   url = "http://checkip.amazonaws.com/"
-# }
-
 data "http" "allowed_ip" {
   url = "http://checkip.amazonaws.com/"
 }
@@ -32,7 +28,6 @@ resource "aws_security_group" "bastion_host" {
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["${chomp(data.http.allowed_ip.response_body)}/32"]
-    # cidr_blocks = [var.allowed_ip]
   }
 
   egress {

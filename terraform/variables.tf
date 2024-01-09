@@ -1,12 +1,3 @@
-# data "http" "bastion_ip" {
-#   url = "http://checkip.amazonaws.com/"
-# }
-
-# variable "allowed_ip" {
-#   type        = string
-#   description = "The IP address to allow access from"
-#   default     = "${chomp(data.http.bastion_ip.response_body)}/32"
-# }
 variable "aws_region" {
   type        = string
   description = "The AWS region to deploy to"
@@ -60,11 +51,6 @@ variable "jenkins_master_instance_type" {
   description = "The instance type for the Jenkins master"
   default     = "t2.large"
 }
-
-# variable "ssl_arn" {
-#   type        = string
-#   description = "The ARN of the SSL certificate to use for the ELB"
-# }
 
 variable "public_key" {
   type        = string
