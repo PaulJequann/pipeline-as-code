@@ -52,6 +52,12 @@ variable "jenkins_master_instance_type" {
   default     = "t2.large"
 }
 
+variable "jenkins_worker_instance_type" {
+  type        = string
+  description = "The instance type for the Jenkins workers"
+  default     = "t2.micro"
+}
+
 variable "public_key" {
   type        = string
   description = "The path to the public key to use for the bastion host"
@@ -60,4 +66,19 @@ variable "public_key" {
 variable "root_domain_name" {
   type        = string
   description = "The root domain name for the project"
+}
+
+variable "jenkins_username" {
+  type        = string
+  description = "The username for the Jenkins admin user"
+}
+
+variable "jenkins_password" {
+  type        = string
+  description = "The password for the Jenkins admin user"
+}
+
+variable "jenkins_credentials_id" {
+  type        = string
+  description = "The ID of the Jenkins credentials to use for the Jenkins worker"
 }
