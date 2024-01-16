@@ -11,7 +11,6 @@ variables {
   region        = "us-east-1"
   aws_profile   = "default"
   instance_type = "t2.micro"
-  ssh_key       = "${var.ssh_key}"
 }
 
 variable JENKINS_USERNAME {
@@ -66,8 +65,8 @@ build {
   }
 
   provisioner "file" {
-    source = "${var.ssh_key}"
-    destination = "/tmp/id_rsa"
+    source = "${var.SSH_KEY}"
+    destination = "/tmp/id_ed25519"
   }
 
   provisioner "shell" {
