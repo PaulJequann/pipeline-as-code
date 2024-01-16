@@ -23,6 +23,11 @@ variable JENKINS_PASSWORD {
   sensitive = true
 }
 
+variable SSH_KEY {
+  type = string
+  sensitive = true
+}
+
 locals {
   timestamp = formatdate("YYYY-MM-DD-hhmmss", timestamp())
 }
