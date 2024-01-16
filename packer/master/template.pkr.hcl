@@ -11,7 +11,7 @@ variables {
   region        = "us-east-1"
   aws_profile   = "default"
   instance_type = "t2.micro"
-  ssh_key = "/home/pj/pjkp.pem"
+  ssh_key       = "${var.ssh_key}"
 }
 
 variable JENKINS_USERNAME {
