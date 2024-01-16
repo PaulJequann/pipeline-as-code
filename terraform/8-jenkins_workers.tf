@@ -20,10 +20,10 @@ data "template_file" "user_data_jenkins_worker" {
 }
 
 resource "aws_launch_configuration" "jenkins_workers_launch_conf" {
-  name            = "jenkins-workers-config"
+  name_prefix     = "jenkins-workers-config"
   image_id        = data.aws_ami.jenkins-workers.id
   instance_type   = var.jenkins_worker_instance_type
-  security_groups = [aws_security_group.jenkins_master_sg.id]
+  security_groups = [aws_security_group.jenkins_workers_sg.id]
   key_name        = aws_key_pair.main.id
   user_data       = data.template_file.user_data_jenkins_worker.rendered
 
