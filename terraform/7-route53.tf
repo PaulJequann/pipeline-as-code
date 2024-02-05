@@ -59,3 +59,15 @@ resource "aws_acm_certificate_validation" "cert_validation" {
   certificate_arn         = aws_acm_certificate.main.arn
   validation_record_fqdns = [for record in aws_route53_record.cert_dns : record.fqdn]
 }
+
+resource "aws_route53_record" "api" {
+  name = aws_api_gateway_domain_name.api.domain_name
+  type = "A"
+  zone_id = data.aws_route53_zone.main.id
+
+  alias {
+    evaluate_target_health = true
+    name = aws_api_gateway_domain_name.api.regional_domain_name
+    zone_id = aws_api_gateway_domain_name.api.regional_zone_id
+  }
+}

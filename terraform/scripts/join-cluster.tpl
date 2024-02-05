@@ -16,13 +16,13 @@ import jenkins.model.Jenkins
 import hudson.plugins.sshslaves.SSHLauncher
 
 DumbSlave dumb = new DumbSlave("'$INSTANCE_NAME'",
-"'$INSTANCE_NAME'",
 "/home/ec2-user",
-"3",
-Mode.NORMAL,
-"workers",
-new SSHLauncher("'$INSTANCE_IP'", 22, "'$JENKINS_CREDENTIALS_ID'"),
-RetentionStrategy.INSTANCE)
+new SSHLauncher("'$INSTANCE_IP'", 22, "'$JENKINS_CREDENTIALS_ID'"))
+dumb.setNodeDescription("'$INSTANCE_NAME'")
+dumb.setNumExecutors(3)
+dumb.setMode(Mode.NORMAL)
+dumb.setLabelString("workers")
+dumb.setRetentionStrategy(new RetentionStrategy.Always())
 Jenkins.instance.addNode(dumb)
 ' $JENKINS_URL/script
 

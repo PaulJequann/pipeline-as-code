@@ -1,0 +1,9 @@
+{
+  "name": "github-webhook",
+  "version": "1.0.0",
+  "description": "Lambda Github Webhook Triggered by API Gateway to send requests to Jenkins",
+  "main": "index.js",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}

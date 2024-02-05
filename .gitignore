@@ -1,3 +1,5 @@
+*.zip
+node_modules/
 # packer
 */packer_cache/
 */crash.log

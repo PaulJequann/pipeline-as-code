@@ -108,7 +108,6 @@ pipeline-stage-view
 plain-credentials
 plugin-util-api
 popper-api
-project-inheritance
 promoted-builds
 pubsub-light
 rebuild
