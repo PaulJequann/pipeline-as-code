@@ -47,7 +47,7 @@ resource "aws_lambda_function" "lambda" {
   function_name    = "GitHubWebhookForwarder"
   role             = aws_iam_role.role.arn
   handler          = "index.handler"
-  runtime          = "nodejs14.x"
+  runtime          = "nodejs20.x"
   timeout          = 30
   source_code_hash = data.archive_file.github_webhook_lambda.output_base64sha256
 
