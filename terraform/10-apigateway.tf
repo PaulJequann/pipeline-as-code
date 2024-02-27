@@ -74,6 +74,7 @@ resource "aws_api_gateway_deployment" "stage" {
     aws_api_gateway_integration.request_integration,
     aws_api_gateway_integration_response.response_method_integration,
     aws_api_gateway_method_response.response_method,
+    aws_acm_certificate.main
   ]
 }
 
@@ -84,6 +85,8 @@ resource "aws_api_gateway_domain_name" "api" {
   endpoint_configuration {
     types = ["REGIONAL"]
   }
+  
+  depends_on = [ aws_acm_certificate.main ]
 }
 
 resource "aws_api_gateway_base_path_mapping" "api" {

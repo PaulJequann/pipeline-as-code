@@ -4,7 +4,7 @@ echo "Installing Amazon Linux extras"
 amazon-linux-extras install epel -y
 
 echo "Install Jenkins stable release"
-wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
 rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 yum update
 amazon-linux-extras install java-openjdk11 -y

@@ -1,4 +1,9 @@
+/* global fetch */
+
+// const fetch = require("node-fetch");
+
 exports.handler = async (event) => {
+  console.log(event);
   try {
     await forwardGitHubEvent(event);
     return {
@@ -29,7 +34,8 @@ async function forwardGitHubEvent(event) {
       "Content-Type": "application/json",
       "X-GitHub-Event": event.headers["X-GitHub-Event"],
     },
-    body: JSON.stringify(JSON.parse(event.body)),
+    body: event.body,
+    // body: JSON.stringify(JSON.parse(event.body)),
   };
 
   const response = await fetch(process.env.JENKINS_URL, requestOptions);

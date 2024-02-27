@@ -53,7 +53,7 @@ resource "aws_lambda_function" "lambda" {
 
   environment {
     variables = {
-      JENKINS_URL = "https://${aws_instance.jenkins_master.private_ip}:8080/github-webhook/"
+      JENKINS_URL = "http://${aws_instance.jenkins_master.private_ip}:8080/github-webhook/"
     }
   }
 
