@@ -55,7 +55,7 @@ variable "jenkins_master_instance_type" {
 variable "jenkins_worker_instance_type" {
   type        = string
   description = "The instance type for the Jenkins workers"
-  default     = "t2.micro"
+  default     = "t2.small"
 }
 
 variable "public_key" {
